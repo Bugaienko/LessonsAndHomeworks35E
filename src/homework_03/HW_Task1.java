@@ -4,7 +4,7 @@ package homework_03;
 @author Sergey Bugaienko
 */
 
-public class HW03 {
+public class HW_Task1 {
 
     /*
     Задача 1. Объявите 10 переменных типа int со значениями 0,1, 2, 3, 4, 5, 6, 7, 8, 9.
