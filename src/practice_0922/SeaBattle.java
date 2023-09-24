@@ -69,7 +69,6 @@ public class SeaBattle {
         int[] boatCoordinate = setBoats(field, true, difficultyLevel);
 
         readyToStart(size, sizeBoat, boatsAmount);
-//        int[] boatCoordinate = (difficultyLevel == 1) ? setBoats(field, sizeBoat) : setBoats(field, true, difficultyLevel);
         showField(field);
 
         while (goodShots < sizeBoat) {
@@ -93,8 +92,6 @@ public class SeaBattle {
 
             countAttempts++;
 
-            //TOD выход из цикла для тестирования
-            // goodShots = sizeBoat;
         } // end while
 
         System.out.println("Вы нашли все корабли! Поздравляю");
@@ -149,8 +146,6 @@ public class SeaBattle {
 //        System.out.println("Введено: " + coordinate);
 
         coordinate = (coordinate > 0 && coordinate <= size) ? coordinate : getCoordinateFromPlayer(str, size, field, helpArray);
-
-
         return coordinate;
     }
 
@@ -244,7 +239,7 @@ public class SeaBattle {
             coordinateFirstBoat = setBoats(field, 2);
             marksCellsNearBoat(field, coordinateFirstBoat, sizeBoat);
 
-            //TODO test str
+            //TODO убрать
             //showField(field);
 
             //ставим однопалубный
@@ -280,10 +275,8 @@ public class SeaBattle {
 
         // кораблик стоит в пределах поля
 
-        //TODO вернуть строку
-        //На время теста все вертикальные
+
         boolean isVertical = random.nextBoolean(); // генерирует true || false
-//        boolean isVertical = true; // генерирует true || false
 
         int xCoordinate = 0, yCoordinate = 0;
 
@@ -297,8 +290,6 @@ public class SeaBattle {
             if (xy[0] > 0) {
                 xCoordinate = xy[0];
                 yCoordinate = xy[1];
-
-
 //            System.out.println("отмечаем корабль: " + xCoordinate + " : " + yCoordinate + " s" + sizeBoat + " " + (xy[2] == 0));
 
                 for (int i = xCoordinate; i < xCoordinate + sizeBoat; i++) {
@@ -313,7 +304,6 @@ public class SeaBattle {
             if (xy[0] > 0) {
                 xCoordinate = xy[0];
                 yCoordinate = xy[1];
-
 //            System.out.println("Ставлю: " + xCoordinate + " : " + yCoordinate);
 
                 for (int i = yCoordinate; i < yCoordinate + sizeBoat; i++) {
@@ -371,16 +361,13 @@ public class SeaBattle {
                         maxLen = maxBoatSizeInX;
                         idx = i;
                     }
-//                    if (maxBoatSizeInX > 0) {
-//                        i = i + maxBoatSizeInX - 1;
-//                    }
+
                 }
                 // TODO System.out.printf("Макс возможный %d от индекса %d\n", maxLen, idx);
             }
 
             if (maxLen < sizeBoat) {
                 // не могу поставить в эту Х корабль такой длинны
-//                return new int[]{-1, y};
                 //TODO проверить. Регенерация
                 boolean isFreeCellsFor = checkFreeSpace(field, sizeBoat);
 
@@ -391,10 +378,8 @@ public class SeaBattle {
                     return new int[]{-2, -2, 0};
                 }
             } else {
-//                System.out.println("bound new x: " + (maxLen - sizeBoat + 1));
                 x = x + random.nextInt(maxLen - sizeBoat + 1);
 //                System.out.println(x + " : " + idx);
-//                System.out.println("Высчитан Y");
                 return new int[]{x, idx, (isVertical) ? 0 : 1};
             }
 
@@ -437,9 +422,8 @@ public class SeaBattle {
                             }
                         }
                     }
-                    //TODO проверить
 //                    System.out.printf("%d:%d макс подряд (бревно) %d\n", x, i, maxBoatSizeInX);
-                    // TODO как-то сохранить i, max
+
                     if (maxBoatSizeInX > maxLen) {
                         maxLen = maxBoatSizeInX;
                         idx = i;
@@ -462,10 +446,8 @@ public class SeaBattle {
                 }
 
             } else {
-//                System.out.println("Bound Y: " + (maxLen - sizeBoat + 1));
                 int newY = idx + random.nextInt(maxLen - sizeBoat + 1);
 //                System.out.println("Y: " + newY);
-//                System.out.println("Высчитан Y");
                 return new int[]{x, newY, (isVertical) ? 0 : 1};
             }
 
@@ -561,7 +543,7 @@ public class SeaBattle {
             }
         }
 
-        //TODO показываю поле после разметки
+        //показываю поле после разметки
         // showField(field);
     }
 
