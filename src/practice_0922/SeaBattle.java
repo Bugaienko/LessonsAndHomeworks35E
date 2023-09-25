@@ -195,8 +195,8 @@ public class SeaBattle {
             case 5:
                 return 'X';
             case 8:
-                return '\u00b7';
-//                return 'O';
+//                return '\u00b7';
+                return 'O';
             default:
                 return '\u00b7';        }
     }
