@@ -2,11 +2,11 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+
 .idea/
 *.iml
 
 plan*.md
-.md
 
 ### Eclipse ###
 .apt_generated
