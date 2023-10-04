@@ -19,5 +19,7 @@ public class MainRubber {
         //ra.expandArray();
 
         System.out.println(ra.toString());
+        int temp = RubberArray.MULTIPLIER;
+
     }
 }
