@@ -101,7 +101,6 @@ public class ArraysUtil {
         }
         return minIndex;
     }
-    
 
     public static int[] initTestArray(int size) {
         Random random = new Random();
