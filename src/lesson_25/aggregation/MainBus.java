@@ -10,13 +10,14 @@ public class MainBus {
 //        System.out.println(passenger.toString());
 //        System.out.println(passenger.getTicketNumber());
 
-        BusDriver driver = new BusDriver("K.White", "AB-4343432");
+        BusDriver driver;
+        driver = new BusDriver("K.White", "AB-4343432");
         System.out.println(driver.toString());
 
         Bus bus = new Bus("Neoplan", 44, driver);
         System.out.println(bus.toString());
 
-        //TODO вывод массива пассажиров.
+        //Done вывод массива пассажиров.
         //Done отсутствие драйвера - вывод автобуса
 
         Bus bus1 = new Bus("Scania", 40);
@@ -30,13 +31,32 @@ public class MainBus {
         bus1.takePassenger(passenger1);
         System.out.println(bus1.toString());
 
+        System.out.println("=================");
+        System.out.println("Drop id:3");
         bus1.dropPassenger(passenger2);
-        bus.takePassenger(passenger2);
-        System.out.println("Bus: " + bus.toString());
+//        bus.takePassenger(passenger2);
+//        System.out.println("Bus: " + bus.toString());
         System.out.println(bus1.toString());
         Passenger passenger3 = new Passenger("Fix ME");
+        System.out.println("=====================");
+        System.out.println("Add id:4");
+        bus1.takePassenger(passenger3);
         bus1.takePassenger(passenger3);
         System.out.println(bus1.toString());
+
+
+        System.out.println("\nSet new Driver");
+        BusDriver bob = new BusDriver("Bob Grant", "AD-123456");
+        bus1.setDriver(bob);
+        System.out.println(bus1.toString());
+        BusDriver gena = new BusDriver("Gennadyi", "GE-858483");
+        bus1.setDriver(new BusDriver("Tester", "A-00"));
+        System.out.println(bus1.toString());
+        System.out.println(bob.toString());
+        bob.setDriveLicence("DW-2342424");
+        bus1.setDriver(bob);
+
+
 
 
 

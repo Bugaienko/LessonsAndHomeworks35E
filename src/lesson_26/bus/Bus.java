@@ -1,8 +1,12 @@
-package lesson_25.aggregation;
+package lesson_26.bus;
 /*
 @date 10.10.2023
 @author Sergey Bugaienko
 */
+
+import lesson_25.aggregation.AutoPilot;
+import lesson_25.aggregation.BusDriver;
+import lesson_25.aggregation.Passenger;
 
 public class Bus {
 
@@ -14,7 +18,7 @@ public class Bus {
     private BusDriver driver;
     private final Passenger[] passengers;
 
-    private final   AutoPilot autoPilot; // один из вариантов инициализации -> = new AutoPilot("V.001-B");
+    private final AutoPilot autoPilot; // один из вариантов инициализации -> = new AutoPilot("V.001-B");
     private int amountPassengers;
     private static int counterForId;
     private static int ticketCounter;

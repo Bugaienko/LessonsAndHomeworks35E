@@ -26,6 +26,7 @@ public class Bus extends Vehicle {
     public void takePassenger() {
         if (countPassengers < capacity ) {
             countPassengers++;
+
             System.out.println("Пассажир зашел в автобус " + this.getModel());
         } else {
             System.out.println("Автобус полный!");
