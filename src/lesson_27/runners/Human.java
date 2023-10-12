@@ -4,11 +4,13 @@ package lesson_27.runners;
 @author Sergey Bugaienko
 */
 
+// создать абстрактный класс Runner, от которого будет наследоваться Human
+
 // public final class Human { -> Если класс помечен ключевым словом final - от него нельзя наследоваться
-public class Human {
+public class Human extends Runner {
     private int speed;
     private int restTime;
-    // TODO можно ли унаследовать файнал поле?
+    // TODO можно ли унаследовать final поле?
     protected String typeRunner;
 
     public Human() {
@@ -23,11 +25,14 @@ public class Human {
         typeRunner = "Human";
     }
 
+
+    @Override
     public void run() {
         System.out.println(typeRunner + " бежит со скоростью " + speed);
         rest(restTime);
     }
 
+    @Override
     public void rest(int time) {
         System.out.println("Мне нужен отдых: " + time);
     }
