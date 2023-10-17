@@ -43,6 +43,7 @@ public class RubberArray<T> {
         }
     }
 
+    /* не используем
     public void addRandomValues(int count, int bound) {
         for (int i = 0; i < count; i++) {
             add(random.nextInt(bound));
@@ -52,7 +53,7 @@ public class RubberArray<T> {
     public void addRandomValues(int count) {
         addRandomValues(count, 101);
     }
-
+     */
 
     private void expandArray() {
 //        int[] newArray = Arrays.copyOf(array, array.length * 2);
