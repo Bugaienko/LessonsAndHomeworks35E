@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class RubberArray<T> {
-    private T[] array; // можно инициализировать поле при его объявлении = new int[10];
+    private T[] array;
     private int cursor;
     static final int MULTIPLIER = 2;
 
