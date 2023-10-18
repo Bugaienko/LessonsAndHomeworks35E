@@ -1,28 +1,28 @@
-package lesson_30.rubberArray;
+package lesson_31.myArrayList;
 /*
 @date 17.10.2023
 @author Sergey Bugaienko
 */
 
+import java.util.Arrays;
 import java.util.Random;
 
-// Ctrl + /
-public class RubberArray<T> {
-
+public class MyArrayList<T> implements MyList<T> {
     private T[] array;
     private int cursor;
     static final int MULTIPLIER = 2;
 
     Random random = new Random();
 
-    public RubberArray() {
+    public MyArrayList() {
         array = (T[]) new Object[10];
     }
 
-    public RubberArray(int sizeDefault) {
+    public MyArrayList(int sizeDefault) {
         array = (T[]) new Object[sizeDefault];
     }
 
+    @Override
     public void add(T number) {
         if (cursor == array.length - 1) {
             expandArray();
@@ -33,6 +33,7 @@ public class RubberArray<T> {
 
 
 
+    @Override
     public void addAll(T... values) {
         /* могу обращаться как с массивом (перебирать по индексам)
         for (int i = 0; i < ints.length; i++) {
@@ -76,23 +77,27 @@ public class RubberArray<T> {
         return result;
     }
 
-    //    public int length() {
+//    public int length() {
 //        return cursor;
 //    }
+    @Override
     public int size() {
         return cursor;
     }
 
+    @Override
     public int indexOf(T value) {
         // 1. Перебрать массив, сравнить элементы, вернуть индекс
         // Если совпадений нет - вернуть минус 1.
 
         for (int i = 0; i < cursor; i++) {
+//            if (array[i] == value) return i;
             if (array[i].equals(value)) return i;
         }
         return -1;
     }
 
+    @Override
     public int lastIndexOf(T value) {
 
         for (int i = cursor - 1; i >= 0; i--) {
@@ -101,10 +106,12 @@ public class RubberArray<T> {
         return -1;
     }
 
+    @Override
     public boolean contains(T value) {
         return indexOf(value) >= 0; //переиспользуем уже написанный код (метод)
     }
 
+    @Override
     public boolean remove(T value) {
         int index = indexOf(value);
         remove(index);
@@ -113,7 +120,7 @@ public class RubberArray<T> {
 
 
 
-
+    @Override
     public T remove(int index) {
         if (index < 0 || index > cursor - 1) return null;
 
@@ -143,17 +150,18 @@ public class RubberArray<T> {
         return value;
     }
 
+    @Override
     public boolean isEmpty() {
         return cursor == 0;
     }
 
-
+    @Override
     public T get(int index) {
         if (index < 0 || index > cursor -1) return null;
         return array[index];
     }
 
-
+    @Override
     public T[] toArray() {
         T[] result = (T[])new Object[cursor];
         for (int i = 0; i < cursor; i++) {
