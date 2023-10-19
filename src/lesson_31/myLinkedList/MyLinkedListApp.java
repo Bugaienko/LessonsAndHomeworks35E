@@ -12,5 +12,7 @@ public class MyLinkedListApp {
 
         strings.add("3");
         strings.add("4");
+
+
     }
 }

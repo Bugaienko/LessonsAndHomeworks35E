@@ -6,11 +6,14 @@ package lesson_31.myLinkedList;
 
 import lesson_31.myArrayList.MyList;
 
-public class MyLinkedList<T>    {
+import java.util.LinkedList;
+
+public class MyLinkedList<T> {
 
     private int size;
     private Node<T> first;
     private Node<T> last;
+
 
     // [1,2,3,4]
 
@@ -21,7 +24,7 @@ public class MyLinkedList<T>    {
             first = new Node<>(value, null, null);
         } else if (last == null) {
             // существует только один узел (first)
-            last = new Node<>(value, first,null);
+            last = new Node<>(value, first, null);
             // следующий узел за first будет равен last
             first.next = last;
         } else {
@@ -39,7 +42,7 @@ public class MyLinkedList<T>    {
         size++;
     }
 
-    public String toString(){
+    public String toString() {
         //TODO
         return "";
     }
