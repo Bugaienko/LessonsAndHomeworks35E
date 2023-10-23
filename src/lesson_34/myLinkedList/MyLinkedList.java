@@ -8,12 +8,41 @@ package lesson_34.myLinkedList;
 import lesson_32.myLinkedList.Queue;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
-public class MyLinkedList<T> implements MyList<T>, Queue<T> {
+public class MyLinkedList<T> implements MyList<T>, Queue<T>, Iterable<T> {
 
     private int size;
     private Node<T> first;
     private Node<T> last;
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<T> {
+
+        Node<T> item;
+
+        public MyIterator() {
+            this.item = first;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return item != null;
+        }
+
+        @Override
+        public T next() {
+            T value = item.value;
+            item = item.next;
+            return value;
+        }
+
+
+    }
 
 
     // [1,2,3,4]
@@ -154,7 +183,7 @@ public class MyLinkedList<T> implements MyList<T>, Queue<T> {
     @Override
     public T[] toArray() {
 
-        if (first == null) return (T[])new Object[0];
+        if (first == null) return (T[]) new Object[0];
 //        T[] result = (T[]) new Object[size];
         T[] result = (T[]) Array.newInstance(first.value.getClass(), size);
         Node<T> cursor = first;

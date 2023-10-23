@@ -4,7 +4,10 @@ package lesson_34.myLinkedList;
 @author Sergey Bugaienko
 */
 
+import lesson_31.myArrayList.MyArrayList;
+
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class LinkedList34Main {
     public static void main(String[] args) {
@@ -25,5 +28,44 @@ public class LinkedList34Main {
 
         String[] strings =  list.toArray();
         System.out.println(Arrays.toString(strings));
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + ", ");
+        }
+        System.out.println();
+
+//        Iterator<String> iterator = list.iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+//        }
+
+
+
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()){
+            String val = iterator.next();
+
+
+        }
+
+        System.out.println(list);
+
+
+        //for-each под "капотом" работает именно так.
+        // в цикл for-each мы можем использовать только класс реализующий интерфейс Iterable
+        for (String val: list){
+            System.out.print(val + ", ");
+        }
+
+
+        MyArrayList<Integer> myArrayList = new MyArrayList<>();
+        myArrayList.addAll(1,2,3,4,5,6);
+
+//        for (Integer val: myArrayList){
+//            System.out.println(val);
+//        }
+
+
+
     }
 }
