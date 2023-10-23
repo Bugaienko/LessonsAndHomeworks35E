@@ -1,4 +1,4 @@
-package lesson_32.myLinkedList;
+package lesson_34.myLinkedList;
 /*
 @date 18.10.2023
 @author Sergey Bugaienko

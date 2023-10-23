@@ -1,11 +1,15 @@
-package lesson_32.myLinkedList;
+package lesson_34.myLinkedList;
 /*
 @date 19.10.2023
 @author Sergey Bugaienko
 @version 0.2
 */
 
-public class MyLinkedList<T>{
+import lesson_32.myLinkedList.Queue;
+
+import java.lang.reflect.Array;
+
+public class MyLinkedList<T> implements MyList<T>, Queue<T> {
 
     private int size;
     private Node<T> first;
@@ -31,14 +35,13 @@ public class MyLinkedList<T>{
             last = new Node<>(value, temp, null);
             temp.next = last;
 
-            System.out.println("First: " + first);
-            System.out.println("last: " + last);
-            System.out.println("temp: " + temp);
-            System.out.println("=================");
+//            System.out.println("First: " + first);
+//            System.out.println("last: " + last);
+//            System.out.println("temp: " + temp);
+//            System.out.println("=================");
         }
         size++;
     }
-
 
 
     // @Override
@@ -64,8 +67,104 @@ public class MyLinkedList<T>{
             first = new Node<>(value, null, temp);
             temp.previous = first;
         }
-
         size++;
+    }
+
+    // @Override
+    public boolean contains(T value) {
+        // если вызвать indexOf со значением, которое есть в списке - вернется какой-то положительный индекс
+        // если вызвать indexOf со значением, которое нет в списке - вернется -1.
+        // следовательно, если возвращенное значение не равно -1 -> элемент с таким значением есть в списке
+        return indexOf(value) != -1;
+    }
+
+    //@Override
+    public T get(int index) {
+        // size = 3, maxIndex = 2; get(3) // index >= size
+        if (index < 0 || index >= size) return null;
+
+        Node<T> cursor = searchNodeByIndex(index);
+
+
+        return cursor.value;
+    }
+
+    private Node<T> searchNodeByIndex(int index) {
+        Node<T> cursor;
+        if (index <= size / 2) {
+//            System.out.println("Get if");
+            cursor = first;
+            for (int i = 0; i < index; i++) {
+                cursor = cursor.next;
+            }
+        } else {
+//            System.out.println("Get else");
+            cursor = last;
+            for (int i = size - 1; i < index; i++) {
+                cursor = cursor.previous;
+            }
+        }
+        return cursor;
+    }
+
+    // @Override
+    public boolean remove(T value) {
+        Node<T> cursor = first;
+        while (cursor != null) {
+            if (cursor.value.equals(value)) {
+                removeNode(cursor);
+                return true;
+            }
+            cursor = cursor.next;
+        }
+        return false;
+    }
+
+    private void removeNode(Node<T> node) {
+        if (node == first) {
+            remove();
+            return;
+        }
+        if (node == last) {
+            removeLast();
+            return;
+        }
+        node.previous.next = node.next;
+        node.next.previous = node.previous;
+        // не обязательно
+        node = null;
+        size--;
+
+    }
+
+    // @Override
+    public T remove(int index) {
+        if (index < 0 || index >= size) return null;
+
+        Node<T> cursor = searchNodeByIndex(index);
+
+        T value = cursor.value;
+
+        removeNode(cursor);
+
+        return value;
+    }
+
+
+    @Override
+    public T[] toArray() {
+
+        if (first == null) return (T[])new Object[0];
+//        T[] result = (T[]) new Object[size];
+        T[] result = (T[]) Array.newInstance(first.value.getClass(), size);
+        Node<T> cursor = first;
+        int index = 0;
+        while (cursor != null) {
+            result[index++] = cursor.value;
+            cursor = cursor.next;
+        }
+
+        return result;
     }
 
     // Удалить самый(первый) левый узел
@@ -79,14 +178,12 @@ public class MyLinkedList<T>{
             // Если в списке только 1 нода (first)
             first = null;
 
-        }
-        else if (size == 2) {
+        } else if (size == 2) {
             // в списке 2 ноды (first и last)
             first = last;
             first.previous = null;
             last = null;
-        }
-        else {
+        } else {
             // больше 2х нод
             first = first.next;
             first.previous = null;
@@ -115,8 +212,7 @@ public class MyLinkedList<T>{
             value = last.value;
             last = null;
             first.next = null;
-        }
-        else {
+        } else {
             value = last.value;
             last = last.previous;
             last.next = null;
