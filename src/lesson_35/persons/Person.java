@@ -1,8 +1,10 @@
-package lesson_34.persons;
+package lesson_35.persons;
 /*
 @date 23.10.2023
 @author Sergey Bugaienko
 */
+
+import java.util.Arrays;
 
 public class Person {
     private String email;
@@ -60,7 +62,7 @@ public class Person {
 
 
             if (!(Character.isAlphabetic(c) || Character.isDigit(c) || c == '.'
-                    || c == '_' || c == '-' || c == '@')) {
+                    || c == '_' || c == '-' || c == '@' )) {
                 return false;
             }
 
@@ -82,16 +84,42 @@ public class Person {
     5. мин 1 спец.символ ("!%$@&")
      */
 
+
+
+    private boolean isPasswordValid(String password) {
+        if (password.length() < 8) return false;
+
+
+        boolean[] res = new boolean[4]; // [false, false, false, false]
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+
+            if (Character.isDigit(c)) {
+                res[0] = true;
+            }
+
+            if (Character.isLowerCase(c)) {
+                res[1] = true;
+            }
+
+            if (Character.isUpperCase(c)) {
+                res[2] = true;
+            }
+
+            if ("!%$@&".indexOf(c) >= 0) {
+                res[3] = true;
+            }
+        }
+
+        System.out.println(Arrays.toString(res));
+        return res[0] && res[1] && res[2] && res[3];
+    }
+
     public void setPassword(String password) {
         if (isPasswordValid(password)) {
             this.password = password;
         }
     }
-
-    private boolean isPasswordValid(String password) {
-        return false;
-    }
-
 
     @Override
     public String toString() {
