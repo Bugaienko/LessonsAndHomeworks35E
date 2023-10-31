@@ -4,7 +4,7 @@ package lesson_35.myArrayList;
 @author Sergey Bugaienko
 */
 
-public interface MyList<T> {
+public interface MyList<T> extends Iterable<T> {
     void add(T value);
 
     void addAll(T... values);
