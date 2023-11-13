@@ -20,8 +20,11 @@ public static void main(String[] args) {
 public class Task3 {
     public static void main(String[] args) {
         String string = "abcdefj ab,cd,f";
-        System.out.println(getFirstUniqueChar(string));
-        System.out.println(getFirstUniqueChar2(string));
+//        System.out.println(getFirstUniqueChar(string));
+//        System.out.println(getFirstUniqueChar2(string));
+
+        String str = "aabbbccdfg!";
+        System.out.println(getFirstUniqueChar2(str));
     }
 
     private static Character getFirstUniqueChar(String string) {
@@ -67,8 +70,11 @@ public class Task3 {
     }
 
     private static Character getFirstUniqueChar2(String string) {
+        // Это решение работает не корректно. Третий повторяющийся символ добавляется в сет уникальных символов
         Set<Character> uniqueChars = new LinkedHashSet<>();
 
+
+        // String str = "aabbbccdfg!";
         for (char ch : string.toCharArray()){
             if (!uniqueChars.add(ch)) {
                 uniqueChars.remove(ch);
