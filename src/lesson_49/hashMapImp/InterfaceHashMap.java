@@ -8,14 +8,14 @@ public interface InterfaceHashMap<K, V>{
     V put(K key, V value);
 
     // Взять из карты значение, соответсвующее ключу. Если ключ отсутствует - возвращаем null
-//    V get(Object key);
+    V get(Object key);
 //
 //    //Удалить пару ключ-значение
 //    V remove(Object key);
 //
     int size();
 //
-//    boolean isEmpty();
+    boolean isEmpty();
 //
 //    boolean containsKey(K key);
 //    void clear();

@@ -4,6 +4,10 @@ package lesson_49.hashMapImp;
 @author Sergey Bugaienko
 */
 
+import org.junit.platform.engine.support.hierarchical.Node;
+
+import java.util.Objects;
+
 public class MyHashMap<K, V> implements InterfaceHashMap<K, V> {
 
     private Node<K, V>[] buckets;
@@ -67,7 +71,101 @@ public class MyHashMap<K, V> implements InterfaceHashMap<K, V> {
         }
 
         size++;
+
+        // проверка загрузки
+
+        if (1.0 * size / capacity >= loadFactor) {
+            resize();
+        }
         return value;
+    }
+
+    /*
+    Для получения значения по ключу
+    1. Получить хэш ключа. Определить индекс ячейки в массиве
+    2. Проводится поиск в этой ячейке. Если элемент/ы присутствуют, сверить ключи для каждого?
+    2.1. если ключи совпали - вернуть значение
+    2.2. если не совпали - вернуть null
+     */
+    @Override
+    public V get(Object key) {
+
+        int index = key != null ? key.hashCode() & (capacity - 1) : 0;
+        Node<K, V> current = buckets[index];
+
+        while (current != null) {
+
+            if (current.key == null && key == null){
+                return current.value;
+            }
+
+            if (current.key != null && current.key.equals(key)) {
+                return current.value;
+            }
+
+            current = current.next;
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    private void resize() {
+        System.out.println("Пересчет карты");
+        // TODO увеличить массив, перераспределить элементы
+        /*
+        1. Увеличить capacity
+        2. Создать новый массив
+        3. Пересчитать хэши и индексы для всех существующий пар
+        4. Перекинуть ссылки массивов
+         */
+
+        capacity = capacity * 2;
+        Node<K, V>[] newBuckets = (Node<K, V>[]) new Node[capacity];
+
+        for (Node<K,V> node : buckets){
+            Node<K, V> current = node;
+
+            while (current != null){
+                // запоминаю следующую в цепочке ноду
+                Node<K,V> next = current.next;
+
+                int newIndex = getIndex(current.key); // новый индекс
+
+//                Node<K,V> newCurrent = newBuckets[newIndex];
+//
+//                System.out.println(newCurrent);
+//                while (newCurrent != null) {
+//                    if (newCurrent.next == null) break;
+//                    newCurrent = newCurrent.next;
+//                }
+//
+//                if (newCurrent == null) {
+//                    newBuckets[newIndex] = current;
+//                } else {
+//                    newCurrent.next = current;
+//                }
+
+                // к текущей новой ноде привешиваю в "next" то, что сейчас уже есть в этой ячейке в новом массиве
+                current.next = newBuckets[newIndex];
+                newBuckets[newIndex] = current;
+
+
+
+                current = next; // берем запомненную "следующую" ноду
+            }
+
+        }
+
+        System.out.println("Пересчет завершен");
+
+        buckets = newBuckets;
+
+
     }
 
     @Override
