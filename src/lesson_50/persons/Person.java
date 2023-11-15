@@ -18,7 +18,14 @@ public class Person {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        try {
+            EmailValidator.validate(email);
+            System.out.println("Email прошел проверку");
+            this.email = email;
+        } catch (EmailValidateException e) {
+            System.out.println("Email НЕ прошел проверку");
+            e.printStackTrace();
+        }
     }
 
     public String getPassword() {

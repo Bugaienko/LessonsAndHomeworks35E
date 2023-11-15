@@ -22,7 +22,7 @@ public class EmailValidator {
 
         // 3. после последней точки 2 или больше символов
         // индекс последнего length - 1;
-        // индекс пред-последнего  length - 2;
+        // индекс пред-последнего length - 2;
 
         if (email.lastIndexOf('.') >= email.length() - 2) throw new EmailValidateException("last . error");
 
@@ -32,7 +32,7 @@ public class EmailValidator {
 
 
             if (!(isContainLegalSymbols(c))) {
-                throw new EmailValidateException("illegals symbols");
+                throw new EmailValidateException("illegal symbols");
             }
         }
 
