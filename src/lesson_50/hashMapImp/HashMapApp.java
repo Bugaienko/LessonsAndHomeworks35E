@@ -1,8 +1,11 @@
-package lesson_49.hashMapImp;
+package lesson_50.hashMapImp;
 /*
 @date 14.11.2023
 @author Sergey Bugaienko
 */
+
+import java.util.Collection;
+import java.util.Set;
 
 public class HashMapApp {
     public static void main(String[] args) {
@@ -42,6 +45,33 @@ public class HashMapApp {
         map.put(-15, "minus");
         map.put(-1, "minus");
         System.out.println(map + " size: " + map.size());
+
+        System.out.println("\n=================REMOVE===============\n");
+        System.out.println(map.remove(11));
+        map.put(32, "delete");
+        System.out.println(map + " size: " + map.size());
+        System.out.println(map.remove(null));
+        System.out.println(map + " size: " + map.size());
+
+        System.out.println("getOrDefault: " + map.getOrDefault(-15, "Default"));
+        System.out.println("getOrDefault: " + map.getOrDefault(11, "Default"));
+
+//        map.clear();
+//        map.put(0, "zero");
+//        map.put(null, "hello");
+
+        map.put(null, "Car");
+        map.put(64, "Ball");
+        System.out.println(map + " size: " + map.size());
+
+        System.out.println(map.containsKey(64));
+
+        Set<Integer> keySet = map.keySet();
+        System.out.println("keySet: " + keySet);
+
+        Collection<String> values = map.values();
+        System.out.println("values: " + values);
+
 
 
     }
