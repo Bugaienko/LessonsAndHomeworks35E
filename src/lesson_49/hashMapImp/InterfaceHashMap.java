@@ -9,6 +9,7 @@ public interface InterfaceHashMap<K, V>{
 
     // Взять из карты значение, соответсвующее ключу. Если ключ отсутствует - возвращаем null
     V get(Object key);
+
 //
 //    //Удалить пару ключ-значение
 //    V remove(Object key);
