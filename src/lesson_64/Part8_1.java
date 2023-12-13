@@ -32,8 +32,5 @@ public class Part8_1 {
             System.out.printf("Найден тег <%s> - %s. Текст внутри: %s\n", matcher4.group("gr1"), matcher4.group(3), matcher4.group(2));
             System.out.println("group: " + matcher4.group());
         }
-
-
-
     }
 }
