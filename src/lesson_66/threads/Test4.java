@@ -1,4 +1,5 @@
 package lesson_66.threads;
+
 /*
 @date 14.12.2023
 @author Sergey Bugaienko
