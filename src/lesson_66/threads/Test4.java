@@ -29,8 +29,6 @@ class Worker {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-
             list1.add(random.nextInt(100));
         }
 
@@ -43,7 +41,6 @@ class Worker {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             list2.add(random.nextInt(100));
         }
 
