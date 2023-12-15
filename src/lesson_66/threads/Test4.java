@@ -73,7 +73,7 @@ class Worker {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
+
         long end = System.currentTimeMillis();
         System.out.println("Duration: " + (end - start));
         System.out.println("list1: " + list1.size());
@@ -90,6 +90,4 @@ class Worker {
         System.out.println("list1: " + list1.size());
         System.out.println("list2: " + list2.size());
     }
-
-
 }
