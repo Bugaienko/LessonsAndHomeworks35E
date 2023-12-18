@@ -44,7 +44,6 @@ class Worker {
             }
             list2.add(random.nextInt(100));
         }
-
     }
 
     public void work() {
